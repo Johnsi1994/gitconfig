@@ -1,21 +1,22 @@
 // For GitLab
 [alias]
-        di = diff
-        co = checkout
         st = status
-        pu = !git fetch upstream && git checkout master && git merge upstream/master
-        br = branch
-        aa = add --all
+        di = diff
         l = log --oneline --decorate --graph --all
+        aa = add --all
         ca = commit --amend
         cm = commit -m
-        cp = cherry-pick
+        co = checkout
+        br = branch
+        cb = checkout -b
+        pu = !git fetch upstream && git checkout master && git merge upstream/master
+        pom = pull origin master
         pfo = push -f origin
         sta = stash
         sp = stash pop
         rem = rebase master
-        rc = rebace --continue
-        pom = pull origin master
+        rc = rebase --continue
+        cp = cherry-pick
         
         // create a new branch and pull the merge request from upstream
         mr = !sh -c 'git fetch $1 merge-requests/$2/head:mr-$1-$2 && git checkout mr-$1-$2' -
