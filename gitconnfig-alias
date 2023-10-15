@@ -3,20 +3,41 @@
         st = status
         di = diff
         l = log --oneline --decorate --graph --all
+
         aa = add --all
         ca = commit --amend
         cm = commit -m
+
+	br = branch
+        // e.g. git brgrep test, this will list all of branches which the branch name is including "test"
+	brgrep = "!f() { git branch | grep $1; }; f"
+        // e.g. git brclean test, this will delete all of branches which the branch name is including "test"
+	brclean = "!f() { git branch | grep $1 | xargs git branch -D; }; f"
+
         co = checkout
-        br = branch
         cb = checkout -b
-        pu = !git fetch upstream && git checkout master && git merge upstream/master
-        pom = pull origin master
-        pfo = push -f origin
+
+	fe = fetch --all
+        pu = pull origin
+	ps = push origin
+        psf = push -f origin
+
         sta = stash
+	stal = stash list
+	stac = stash clear
         sp = stash pop
-        rem = rebase master
-        rc = rebase --continue
+	ss = stash show -p
+
+        mg = merge
+	mgc = merge --continue
+	mga = merge --abort
+
+	rb = rebase
+        rbc = rebase --continue
+	rba = rebase --abort
+	rbi = rebase -i
+
         cp = cherry-pick
-        
-        // create a new branch and pull the merge request from upstream
-        mr = !sh -c 'git fetch $1 merge-requests/$2/head:mr-$1-$2 && git checkout mr-$1-$2' -
+	cpc = cherry-pick --continue
+	cpa = cherry-pick --abort 
+
